@@ -22,7 +22,7 @@ const doc: DocumentNode = {
   ],
 };
 
-// The JSON that page_to_ast returns
+// The JSON that parse_page returns
 const page: Page = JSON.parse(json);
 ```
 
@@ -42,7 +42,7 @@ All 37 AST node interfaces and the `AstNode` union type:
 
 **Inline nodes (20):** `TextNode`, `SoftbreakNode`, `LinebreakNode`, `EmphNode`, `StrongNode`, `StrikethroughNode`, `UnderlineNode`, `HighlightNode`, `SuperscriptNode`, `SubscriptNode`, `SpoileredTextNode`, `CodeNode`, `LinkNode`, `EmbedNode`, `WikilinkNode`, `FootnoteReferenceNode`, `ShortcodeNode`, `MathNode`, `HtmlInlineNode`, `HashtagNode`
 
-**Page:** `Page` and `PageItem`, the result of `page_to_ast`
+**Page:** `Page` and `PageItem`, the result of `parse_page`
 
 **Attribute values:** `ListType`, `TableAlignment`
 
