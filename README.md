@@ -2,6 +2,8 @@
 
 TypeScript type definitions for the [FlatMarkdown](https://github.com/petajournal/flatmarkdown) AST.
 
+The npm package is named `flatmarkdown-ast`. The repository is named `flatmarkdown-ast-ts`, because the Rust crate [flatmarkdown-ast](https://crates.io/crates/flatmarkdown-ast) with the same types lives in the [flatmarkdown](https://github.com/petajournal/flatmarkdown) repository.
+
 ## Installation
 
 ```bash

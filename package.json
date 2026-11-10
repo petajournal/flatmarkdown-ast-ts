@@ -11,12 +11,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/petajournal/flatmarkdown-ast.git"
+    "url": "git+https://github.com/petajournal/flatmarkdown-ast-ts.git"
   },
   "bugs": {
-    "url": "https://github.com/petajournal/flatmarkdown-ast/issues"
+    "url": "https://github.com/petajournal/flatmarkdown-ast-ts/issues"
   },
-  "homepage": "https://github.com/petajournal/flatmarkdown-ast#readme",
+  "homepage": "https://github.com/petajournal/flatmarkdown-ast-ts#readme",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
