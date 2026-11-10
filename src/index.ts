@@ -304,7 +304,7 @@ export interface PageItem {
   ast: DocumentNode;
 }
 
-/** The result of `page_to_ast` */
+/** The result of `parse_page` */
 export interface Page {
   type: 'page';
   /** The raw YAML front matter, including the `---` delimiters, or `null` */
