@@ -13,23 +13,49 @@ npm install flatmarkdown-ast
 ## Usage
 
 ```typescript
-import type { AstNode, DocumentNode, HeadingNode } from 'flatmarkdown-ast';
+import type { AstNode, DocumentNode, Page } from 'flatmarkdown-ast';
 
 const doc: DocumentNode = {
   type: 'document',
   children: [
-    { type: 'heading', level: 1, setext: false, children: [{ type: 'text', value: 'Hello' }] },
+    { type: 'heading', level: 1, children: [{ type: 'text', value: 'Hello' }] },
   ],
 };
+
+// The JSON that page_to_ast returns
+const page: Page = JSON.parse(json);
 ```
+
+## Versions
+
+The types follow [SPEC_AST.md](https://github.com/petajournal/flatmarkdown/blob/main/SPEC_AST.md) of the flatmarkdown repository.
+They hold what the specification defines, and nothing more.
+
+The version is the same as the version of the Rust crates.
+`flatmarkdown-ast` x.y.z on npm describes the AST that the `flatmarkdown` crate x.y.z makes.
 
 ## Exported Types
 
-All 46 AST node interfaces and the `AstNode` union type:
+All 37 AST node interfaces and the `AstNode` union type:
 
-**Block nodes:** `DocumentNode`, `ParagraphNode`, `HeadingNode`, `CodeBlockNode`, `BlockQuoteNode`, `MultilineBlockQuoteNode`, `ListNode`, `ItemNode`, `TaskItemNode`, `TableNode`, `TableRowNode`, `TableCellNode`, `ThematicBreakNode`, `HtmlBlockNode`, `FootnoteDefinitionNode`, `DescriptionListNode`, `DescriptionItemNode`, `DescriptionTermNode`, `DescriptionDetailsNode`, `AlertNode`, `FrontMatterNode`, `HeexBlockNode`, `SubtextNode`
+**Block nodes (17):** `DocumentNode`, `ParagraphNode`, `HeadingNode`, `CodeBlockNode`, `BlockQuoteNode`, `MultilineBlockQuoteNode`, `ListNode`, `ItemNode`, `TaskItemNode`, `TableNode`, `TableRowNode`, `TableCellNode`, `ThematicBreakNode`, `HtmlBlockNode`, `FootnoteDefinitionNode`, `AlertNode`, `SubtextNode`
 
-**Inline nodes:** `TextNode`, `SoftbreakNode`, `LinebreakNode`, `EmphNode`, `StrongNode`, `StrikethroughNode`, `UnderlineNode`, `HighlightNode`, `SuperscriptNode`, `SubscriptNode`, `SpoileredTextNode`, `CodeNode`, `LinkNode`, `ImageNode`, `FootnoteReferenceNode`, `ShortcodeNode`, `MathNode`, `HtmlInlineNode`, `HeexInlineNode`, `RawNode`, `EscapedNode`, `EscapedTagNode`, `WikilinkNode`, `HashtagNode`
+**Inline nodes (20):** `TextNode`, `SoftbreakNode`, `LinebreakNode`, `EmphNode`, `StrongNode`, `StrikethroughNode`, `UnderlineNode`, `HighlightNode`, `SuperscriptNode`, `SubscriptNode`, `SpoileredTextNode`, `CodeNode`, `LinkNode`, `EmbedNode`, `WikilinkNode`, `FootnoteReferenceNode`, `ShortcodeNode`, `MathNode`, `HtmlInlineNode`, `HashtagNode`
+
+**Page:** `Page` and `PageItem`, the result of `page_to_ast`
+
+**Attribute values:** `ListType`, `TableAlignment`
+
+## Changes in 0.5.0
+
+0.5.0 follows the AST of flatmarkdown 0.5.0. It is a breaking change from 0.2.0.
+
+- `ImageNode` is now `EmbedNode` (`type: 'embed'`), with `props`.
+- `ItemNode` has no `tight`. Read `tight` of the parent `ListNode`.
+- `MathNode` has no `dollar_math` and no `display_math`. Math is always inline.
+- `HeadingNode` has no `setext`.
+- The nodes that the parser never makes are removed: `FrontMatterNode`, `RawNode`, `EscapedNode`, `EscapedTagNode`, `HeexBlockNode`, `HeexInlineNode`, and the four description list nodes.
+- `Page` and `PageItem` are new.
 
 ## License
 
